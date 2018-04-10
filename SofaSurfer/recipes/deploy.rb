@@ -11,16 +11,16 @@ directory "#{node[:SofaSurfer][:path]}" do
 end
 
 # deploy script here
-git "#{node[:sofa_surfer][:path]}" do
-  repository node[:sofa_surfer][:git_repository]
-  revision node[:sofa_surfer][:git_revision]
+git "#{node[:SofaSurfer][:path]}" do
+  repository node[:SofaSurfer][:git_repository]
+  revision node[:SofaSurfer][:git_revision]
   environment ({"HOME"=>"/home/ubuntu"})
   action :sync
   user "ubuntu"
 end
 
 execute "Install Gems" do
-  cwd node[:sofa_surfer][:path]
+  cwd node[:SofaSurfer][:path]
   command "bundle install"
   user "ubuntu"
   # group new_resource.group
@@ -29,7 +29,7 @@ execute "Install Gems" do
 end
 
 execute "Install NPM packages" do
-  cwd node[:sofa_surfer][:path]
+  cwd node[:SofaSurfer][:path]
   command "npm install"
   user "ubuntu"
   # group new_resource.group
@@ -38,21 +38,21 @@ execute "Install NPM packages" do
 end
 
 execute "Compile Webpack Assets" do
-  cwd node[:sofa_surfer][:path]
+  cwd node[:SofaSurfer][:path]
   command "./node_modules/.bin/webpack"
   environment ({"NODE_ENV": "production", "HOME": "/home/ubuntu"})
   user "ubuntu"
 end
 
 execute "Clobber Rails Assets" do
-  cwd node[:sofa_surfer][:path]
+  cwd node[:SofaSurfer][:path]
   command "bundle exec rake assets:clobber"
   environment ({"RAILS_ENV": "production", "HOME": "/home/ubuntu"})
   user "ubuntu"
 end
 
 execute "Compile Rails Assets" do
-  cwd node[:sofa_surfer][:path]
+  cwd node[:SofaSurfer][:path]
   command "bundle exec rake assets:precompile"
   environment ({"RAILS_ENV": "production", "HOME": "/home/ubuntu"})
   user "ubuntu"
