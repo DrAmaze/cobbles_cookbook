@@ -16,7 +16,7 @@ template "sofasurfer_service" do
     mode "0755"
 end
 
-service "sofasurfer" do
+service "SofaSurfer" do
   supports :restart => true, :start => true, :stop => true, :reload => true
   action [ :enable ]
 end
@@ -26,7 +26,7 @@ template "#{node['nginx']['dir']}/sites-available/SofaSurfer" do
   notifies :reload, 'service[nginx]', :delayed
 end
 
-nginx_site 'sofasurfer' do
+nginx_site 'SofaSurfer' do
   action :enable
 end
 
