@@ -8,7 +8,7 @@ server {
   client_max_body_size 4G;
   # server_name  *;
 
-  root <%= node['sofasurfer']['path'] %>/public;
+  root <%= node['SofaSurfer']['path'] %>/public;
   access_log  <%= node['nginx']['log_dir'] %>/sofasurfer.access.log;
 
   location / {
@@ -26,6 +26,6 @@ server {
 
   error_page 500 502 503 504 /500.html;
   location = /500.html {
-    root <%= node['sofasurfer']['path'] %>/public;
+    root <%= node['SofaSurfer']['path'] %>/public;
   }
 }

@@ -12,8 +12,8 @@ end
 
 # deploy script here
 git "#{node[:SofaSurfer][:path]}" do
-  repository node[:SofaSurfer][:git_repository]
-  revision node[:SofaSurfer][:git_revision]
+  repository node[:sofa_surfer][:git_repository]
+  revision node[:sofa_surfer][:git_revision]
   environment ({"HOME"=>"/home/ubuntu"})
   action :sync
   user "ubuntu"

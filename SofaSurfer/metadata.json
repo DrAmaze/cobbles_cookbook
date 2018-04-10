@@ -1,8 +1,8 @@
 {
-  "name": "Sofa Surfer",
+  "name": "SofaSurfer",
   "description": "Installs SofaSurfer",
   "long_description": "",
-  "maintainer": "Gene",
+  "maintainer": "Jacob",
   "maintainer_email": "jacob@butlersdomain.com",
   "license": "Apache 2.0",
   "platforms": {
